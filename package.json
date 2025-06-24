@@ -1,0 +1,14 @@
+{
+  "name": "mocxy-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "start": "pnpm --filter mcxy-example start",
+    "release": "pnpm changeset version && git add . && git commit -m \"chore: release\" && git push && git push --follow-tags"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5",
+    "changesets": "^1.0.2"
+  }
+}

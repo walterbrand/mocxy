@@ -1,0 +1,26 @@
+{
+  "name": "mocxy",
+  "version": "0.1.0",
+  "description": "Express middleware mock server",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "mock",
+    "server"
+  ],
+  "author": "Jij",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "typescript": "^5.4.0"
+  }
+}

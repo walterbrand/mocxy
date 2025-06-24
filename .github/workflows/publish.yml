@@ -1,0 +1,43 @@
+name: Publish mocxy to npm
+
+on:
+  push:
+    tags:
+      - 'v*' # bijvoorbeeld: v1.0.1
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish mocxy
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: packages/mocxy
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build package
+        run: pnpm build
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

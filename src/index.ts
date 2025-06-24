@@ -1,8 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 
-export function mocxy() {
+export function mocxy(): RequestHandler {
     return function (req: Request, res: Response, next: NextFunction) {
-        res.setHeader('x-mocxy', 'true'); // zichtbaar teken dat het werkt
+        res.setHeader('x-mocxy', 'true');
         next();
     };
 }

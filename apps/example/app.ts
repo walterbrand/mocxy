@@ -5,12 +5,12 @@ import { mocxy } from 'mocxy';
 
 const app = express();
 
-const middleware: RequestHandler = mocxy(); // 🔧 expliciete typehint
+const middleware: RequestHandler = mocxy();
 
-app.use(middleware); // ✅ geen TS2769 meer
+app.use(middleware);
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Mocxy is active!');
+    res.send('Mocxy is active!?');
 });
 
 app.listen(3333, () => {

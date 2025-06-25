@@ -5,10 +5,17 @@
   "scripts": {
     "build": "pnpm -r run build",
     "start": "pnpm --filter mcxy-example start",
-    "release": "pnpm changeset version && git add . && git commit -m \"chore: release\" && git push && git push --follow-tags"
+    "dev": "concurrently -n mocxy,example -c blue,green \"pnpm --filter mocxy run watch:build\" \"wait-on ./packages/mocxy/dist/index.js && pnpm --filter mocxy-example start\"",
+    "release": "pnpm changeset version && git add . && git commit -m \"chore: release\" && git push && git push --follow-tags",
+    "changeset": "pnpm exec changeset"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
-    "changesets": "^1.0.2"
+    "changesets": "^1.0.2",
+    "concurrently": "^9.2.0",
+    "wait-on": "^8.0.3"
+  },
+  "overrides": {
+    "@types/express": "^4.17.21"
   }
 }
